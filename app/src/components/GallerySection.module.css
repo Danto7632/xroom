@@ -1,0 +1,258 @@
+.gallery {
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #FDF8F0 0%, #F5E6D3 100%);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, rgba(93, 46, 70, 0.1) 0%, rgba(201, 169, 89, 0.1) 100%);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: #5D2E46;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.sectionTitle {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #5D2E46;
+}
+
+.galleryList {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* 각 갤러리 아이템 */
+.galleryItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.galleryItem.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 짝수번째는 좌우 반전 */
+.galleryItem.reverse {
+  direction: rtl;
+}
+
+.galleryItem.reverse > * {
+  direction: ltr;
+}
+
+/* 이미지 영역 */
+.imageArea {
+  position: relative;
+}
+
+.imageBg {
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  opacity: 0.15;
+  transition: transform 0.5s ease;
+}
+
+.reverse .imageBg {
+  left: auto;
+  right: -20px;
+}
+
+.galleryItem:hover .imageBg {
+  transform: translate(-10px, 10px);
+}
+
+.reverse.galleryItem:hover .imageBg {
+  transform: translate(10px, 10px);
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.galleryItem:hover .imageWrapper {
+  transform: translateY(-10px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.galleryItem:hover .imageWrapper img {
+  transform: scale(1.05);
+}
+
+.number {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(93, 46, 70, 0.08);
+  line-height: 1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.reverse .number {
+  left: auto;
+  right: -20px;
+}
+
+/* 텍스트 영역 */
+.textArea {
+  padding: 20px 0;
+}
+
+.textContent {
+  max-width: 450px;
+}
+
+.reverse .textContent {
+  margin-left: auto;
+}
+
+.subtitle {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #3D2914;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 1.05rem;
+  color: #3D2914;
+  opacity: 0.8;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.accentLine {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.galleryItem:hover .accentLine {
+  width: 100px;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .gallery {
+    padding: 80px 20px;
+  }
+
+  .galleryList {
+    gap: 80px;
+  }
+
+  .galleryItem {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .galleryItem.reverse {
+    direction: ltr;
+  }
+
+  .reverse .textContent {
+    margin-left: 0;
+  }
+
+  .imageBg {
+    top: 15px;
+    left: -15px;
+  }
+
+  .reverse .imageBg {
+    left: -15px;
+    right: auto;
+  }
+
+  .number {
+    font-size: 4rem;
+    bottom: -15px;
+    left: -10px;
+  }
+
+  .reverse .number {
+    left: -10px;
+    right: auto;
+  }
+
+  .textArea {
+    text-align: center;
+  }
+
+  .textContent {
+    max-width: 100%;
+  }
+
+  .accentLine {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    margin-bottom: 50px;
+  }
+
+  .galleryList {
+    gap: 60px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .imageWrapper {
+    border-radius: 16px;
+  }
+}

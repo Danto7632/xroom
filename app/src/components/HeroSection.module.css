@@ -1,0 +1,367 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transform: scale(1.1);
+  opacity: 0;
+  transition: transform 1.5s ease, opacity 1.2s ease;
+}
+
+.bgImage.bgLoaded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(93, 46, 70, 0.85) 0%,
+    rgba(61, 41, 20, 0.8) 50%,
+    rgba(139, 69, 19, 0.75) 100%
+  );
+  z-index: 1;
+}
+
+.floatingElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.floatCircle1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(201, 169, 89, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float1 8s ease-in-out infinite;
+}
+
+.floatCircle2 {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(224, 123, 57, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float2 10s ease-in-out infinite;
+}
+
+.floatCircle3 {
+  position: absolute;
+  top: 50%;
+  right: 25%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float3 6s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 20px) scale(1.05); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(15px, 15px); }
+}
+
+.content {
+  position: relative;
+  z-index: 5;
+  padding: 0 20px;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  transition-delay: 0.3s;
+}
+
+.content.contentLoaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content.contentLoaded .badge {
+  animation: fadeInDown 0.8s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.content.contentLoaded .title {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+.content.contentLoaded .tagline {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.9s;
+  opacity: 0;
+}
+
+.content.contentLoaded .description {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1.1s;
+  opacity: 0;
+}
+
+.content.contentLoaded .buttons {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1.3s;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-family: 'Noto Serif KR', serif;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.titleSub {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  letter-spacing: 5px;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: #C9A959;
+  margin-bottom: 35px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.description {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.9;
+  margin-bottom: 50px;
+}
+
+.description strong {
+  color: #C9A959;
+  font-weight: 700;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-family: 'Gowun Batang', serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, #C9A959 0%, #E07B39 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 40px rgba(201, 169, 89, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btnPrimary svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 50px rgba(201, 169, 89, 0.5);
+}
+
+.btnPrimary:hover svg {
+  transform: translateX(5px);
+}
+
+.btnSecondary {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-family: 'Gowun Batang', serif;
+  font-weight: 700;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.scrollIndicator.scrollLoaded {
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1.8s;
+}
+
+.scrollIndicator:hover {
+  opacity: 0.7;
+}
+
+.scrollIndicator span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 2px;
+}
+
+.mouse {
+  width: 26px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.wheel {
+  width: 4px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  animation: scroll 2s ease-in-out infinite;
+}
+
+@keyframes scroll {
+  0%, 100% { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 768px) {
+  .badge {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .floatCircle1,
+  .floatCircle2,
+  .floatCircle3 {
+    display: none;
+  }
+}
