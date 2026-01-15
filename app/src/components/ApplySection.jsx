@@ -61,7 +61,7 @@ const ApplySection = () => {
         submitData.append(`이벤트 사용 사진동영상_${idx + 1}`, item.file)
       })
 
-      const response = await fetch('https://hook.eu1.make.com/vuoktk3w1id82ux7ixqyelutqnk4r7xy', {
+      const response = await fetch('https://hook.eu1.make.com/yepqorwl9l6psnjs82bv83qzirz56lks', {
         method: 'POST',
         body: submitData
       })
