@@ -71,14 +71,6 @@ const HeroSection = () => {
           </button>
         </div>
       </div>
-
-      {/* 스크롤 인디케이터 */}
-      <div className={`${styles.scrollIndicator} ${isLoaded ? styles.scrollLoaded : ''}`} onClick={() => scrollToSection('intro')}>
-        <div className={styles.mouse}>
-          <div className={styles.wheel} />
-        </div>
-        <span>아래로 스크롤</span>
-      </div>
     </section>
   )
 }
