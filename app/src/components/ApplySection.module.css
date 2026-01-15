@@ -81,9 +81,50 @@
   letter-spacing: 0.3px;
 }
 
+.input {
+  padding: 16px 20px;
+  border: 2px solid rgba(93, 46, 70, 0.15);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  color: #3D2914;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #5D2E46;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(93, 46, 70, 0.1);
+}
+
+.input::placeholder {
+  color: #999;
+}
+
 .textarea {
+  padding: 16px 20px;
+  border: 2px solid rgba(93, 46, 70, 0.15);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  color: #3D2914;
   resize: vertical;
   min-height: 130px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #5D2E46;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(93, 46, 70, 0.1);
+}
+
+.textarea::placeholder {
+  color: #999;
 }
 
 .submitBtn {
