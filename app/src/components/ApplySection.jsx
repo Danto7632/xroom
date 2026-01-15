@@ -61,32 +61,31 @@ const ApplySection = () => {
         submitData.append(`이벤트 사용 사진동영상_${idx + 1}`, item.file)
       })
 
-      const response = await fetch('https://hook.eu1.make.com/yepqorwl9l6psnjs82bv83qzirz56lks', {
+      // no-cors 모드로 CORS 에러 방지 (응답 본문은 읽을 수 없음)
+      await fetch('https://hook.eu1.make.com/yepqorwl9l6psnjs82bv83qzirz56lks', {
         method: 'POST',
+        mode: 'no-cors',
         body: submitData
       })
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          phone: '',
-          preferredDate: '',
-          participants: '',
-          eventRequest: ''
-        })
-        // Clean up previews
-        referenceImages.forEach(item => {
-          if (item.preview) URL.revokeObjectURL(item.preview)
-        })
-        eventMedias.forEach(item => {
-          if (item.preview) URL.revokeObjectURL(item.preview)
-        })
-        setReferenceImages([])
-        setEventMedias([])
-      } else {
-        setSubmitStatus('error')
-      }
+      // no-cors 모드에서는 응답 상태를 확인할 수 없으므로 성공으로 처리
+      setSubmitStatus('success')
+      setFormData({
+        name: '',
+        phone: '',
+        preferredDate: '',
+        participants: '',
+        eventRequest: ''
+      })
+      // Clean up previews
+      referenceImages.forEach(item => {
+        if (item.preview) URL.revokeObjectURL(item.preview)
+      })
+      eventMedias.forEach(item => {
+        if (item.preview) URL.revokeObjectURL(item.preview)
+      })
+      setReferenceImages([])
+      setEventMedias([])
     } catch (error) {
       console.error('Submit error:', error)
       setSubmitStatus('error')
